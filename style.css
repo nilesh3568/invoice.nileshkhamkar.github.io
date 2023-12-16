@@ -1,0 +1,101 @@
+@media print
+{
+	.paid
+	{
+		display: block !important;
+	}
+
+	.card-header
+	{
+		background-color: #58081E !important;
+	}
+
+	.card
+	{
+		//border:1px solid black !important;
+		background-color: white !important;
+		border:none !important;
+	}
+
+	.card-footer
+	{
+		display: block !important;
+		background-color: #58081E !important;
+	}
+
+	.footer
+	{
+		font-size: 13px !important;
+		font-weight: bold !important;
+		color: white !important;
+	}
+
+	.title
+	{
+		color: white !important;
+		font-weight: bold !important;
+	}
+
+	.btn
+	{
+		display: none !important;
+	}
+
+	.paint
+	{
+		color: black !important;
+		background-color: grey !important;
+	}
+
+	//.card 
+	{
+		border:1px solid black !important;
+	}
+
+	.noprint
+	{
+		display: none;
+	}
+
+	.form-control
+	{
+		border:0px !important;
+		background-color: white !important;
+		color: black !important;
+	}
+
+	.input-group-text
+	{
+		background-color: white !important;
+		border:0px !important;
+		color: black !important;
+		font-weight: bold !important;
+	}
+
+	.table
+	{
+		border:1px solid white !important;
+	}
+
+	.address
+	{
+		margin-top: -20px !important;
+	}
+	.mobile
+	{
+		margin-top: -20px !important;
+	}
+	.date
+	{
+		margin-top: -20px !important;
+	}
+
+}
+
+.input-group-text
+{
+	width: 100px;
+}
+
+
+

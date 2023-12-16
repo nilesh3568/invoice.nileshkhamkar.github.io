@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INVOICE</title>
+    <link rel="icon" href="photos/invoice.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+   	
+  	<div class="container-fluid text-center">
+    	<div class="card mt-3" style="border:1px solid black;">
+  			<div class="card-header">
+   			 <h5 class="title">INVOICE</h5>
+  			</div>
+  			<div class="card-body">
+    			<div class="row">
+    				<div class="col-md-7">
+    					<div class="input-group mb-3">
+						  <span class="input-group-text">Customer :</span>
+						  <input type="text" class="form-control" placeholder="Customer Name" required="">
+						</div>
+
+						<div class="input-group mb-3">
+						  <span class="input-group-text address">Address :</span>
+						  <input type="text" class="form-control address" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+						</div>
+
+						<div class="input-group mb-3">
+						  <span class="input-group-text mobile">Mobile :</span>
+						  <input type="number" class="form-control mobile" placeholder="Mobile">
+						</div>
+    				</div>
+    				<div class="col-md-5">
+    					<div class="input-group mb-3">
+						  <span class="input-group-text">Invoice No :</span>
+						  <input type="text" class="form-control" id="invoiceNumberInput" name="invoiceNumber" readonly="">
+						</div>
+
+						<div class="input-group mb-3">
+						  <span class="input-group-text date">Date :</span>
+						  <input type="text" class="form-control date" id="currentDateInput" name="currentDate" readonly="">
+						</div>
+
+						<div class="input-group mb-3">
+						  <span class="input-group-text date">Time :</span>
+						  <input type="text" class="form-control date" id="currentTimeInput" name="currentTime" readonly="">
+						</div>
+    				</div>
+    				<div style="overflow-x: auto;">
+    					<table class="table table-bordered table-hover table-responsive" style="width: 100%; overflow-x: scroll;">
+						  <thead class="table-light">
+						    <tr class="abc">
+						      <th scope="col" class="text-end">#</th>
+						      <th scope="col" class="text-start">Item Name</th>
+						      <th scope="col" class="text-end">Quantity</th>
+						      <th scope="col" class="text-end">Rate</th>
+						      <th scope="col" class="text-end">Amount</th>
+						      <th class="noprint"><button class="btn btn-success" onclick="BtnAdd()"><i class="bi bi-plus-circle text-white"></i></button></th>
+						    </tr>
+						  </thead>
+						  <tbody id="TBody">
+						    <tr id="TRow" class="d-none">
+						      <th scope="row">1</th>
+						      <td>
+						      	<input type="text" class="form-control" list="items" class="text-end">
+						      	<datalist id="items">
+						      		<option value="Pen"></option>
+						      		<option value="Pencil"></option>
+						      		<option value="Scale"></option>
+						      		<option value="Sharpner"></option>
+						      		<option value="Ereaser"></option>
+						      		<option value="Compas"></option>
+						      		<option value="Schoolbag"></option>
+						      	</datalist>
+						      </td>
+						      <td><input type="number" class="form-control text-end" name="qty" onkeyup="Calc(this);"></td>
+						      <td><input type="number" class="form-control text-end" name="rate" onkeyup="Calc(this);"></td>
+						      <td><input type="number" class="form-control text-end" name="amt" readonly=""></td>
+						      <td class="noprint"><button class="btn btn-danger" onclick="BtnDelete(this)"><span><i class="bi bi-trash-fill"></i></span></button></td>
+						    </tr>
+						    <tr id="TRow">
+						      <th scope="row">1</th>
+						      <td>
+						      	<input type="text" class="form-control" placeholder="Item Name" list="items" class="text-end">
+						      	<datalist id="items">
+						      		<option value="Pen"></option>
+						      		<option value="Pencil"></option>
+						      		<option value="Scale"></option>
+						      		<option value="Sharpner"></option>
+						      		<option value="Ereaser"></option>
+						      		<option value="Compas"></option>
+						      		<option value="Schoolbag"></option>
+						      	</datalist>
+						      </td>
+						      <td><input type="number" class="form-control text-end" name="qty" onkeyup="Calc(this);"></td>
+						      <td><input type="number" class="form-control text-end" name="rate" onkeyup="Calc(this);"></td>
+						      <td><input type="number" class="form-control text-end" name="amt" readonly=""></td>
+						      <td class="noprint"><button class="btn btn-danger" onclick="BtnDelete(this)"><span><i class="bi bi-trash-fill"></i></span></button></td>
+						    </tr>
+						  </tbody>
+						</table>
+    				</div>
+					<hr>
+					<div class="col-md-8">
+    					<img class="paid" style="width: 30%; display: none;margin: auto;" src="photos/paid1.PNG">
+    				</div>
+    				<div class="col-md-4">
+    					<div class="input-group mb-3">
+						  <span class="input-group-text">Amount :</span>
+						  <input type="number" class="form-control"  id="FTotal" name="FTotal" readonly="">
+						</div>
+
+						<div class="input-group mb-3">
+						  <span class="input-group-text">GST(18%) :</span>
+						  <input type="number" class="form-control text-danger" id="FGST" name="FGST" onkeyup="GetTotal()" readonly="">
+						</div>
+
+						<div class="input-group">
+						  <span class="input-group-text">Total (<i class="bi bi-currency-rupee"></i>) :</span>
+						  <input type="number" class="form-control text-success" id="FNet" name="FNet" readonly="" style="font-weight: bold;">
+						</div>
+    				</div>
+
+    				<div class="col-md-12">
+    					<button onclick="GetPrint()" class="btn btn-primary float-start mt-4">Print <span><i class="bi bi-printer-fill"></i></span></button>
+    				</div>
+    			</div>
+  			</div>
+  			<div class="card-footer" style="display: none;">
+  				<h4 class="footer">THANKS...VISIT AGAIN...</h4>
+  			</div>
+		</div>
+	</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
